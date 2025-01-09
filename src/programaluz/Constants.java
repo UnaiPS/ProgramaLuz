@@ -1,8 +1,14 @@
+package programaluz;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class Constants {
+class Constants {
+    private Constants() {
+        throw new IllegalStateException("Constants class");
+    }
+
     //Valores calculos
     public static final double KW_EUROS = 0.123009;
     public static final double KWH_EUROS = 0.203906;

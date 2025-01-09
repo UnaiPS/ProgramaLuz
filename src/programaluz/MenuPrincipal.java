@@ -1,3 +1,5 @@
+package programaluz;
+
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
@@ -6,10 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 public class MenuPrincipal extends JFrame implements ActionListener, KeyListener {
 	
@@ -26,21 +25,19 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 
 			JTextField nombre = new JTextField();
 			nombre.setFont(Constants.FUENTE_NEGRITA);
-			nombre.setHorizontalAlignment(JTextField.CENTER);
+			nombre.setHorizontalAlignment(SwingConstants.CENTER);
 			nombre.setEditable(false);
 			nombre.setFocusable(false);
 			JTextField campo = new JTextField();
 			campo.setFont(Constants.FUENTE_NEGRITA);
 			campo.addKeyListener(this);
 			campo.addFocusListener(new java.awt.event.FocusAdapter() {
+				@Override
 			    public void focusGained(final java.awt.event.FocusEvent evt) {
-			        SwingUtilities.invokeLater(new Runnable() {
-			            @Override
-			            public void run() {
-			                JTextField cam = (JTextField) evt.getComponent();
-			                cam.selectAll();
-			            }
-			        });
+			        SwingUtilities.invokeLater(() -> {
+                        JTextField cam = (JTextField) evt.getComponent();
+                        cam.selectAll();
+                    });
 			    }
 			});
 			arrayContainers[i].add(nombre);
@@ -78,21 +75,24 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 				campo.setBackground(Color.WHITE);
 				campo.setFocusable(false);
 				break;
+			default:
+				break;
 			}
+
 		}
 
         JButton botonCalc = new JButton();
 		botonCalc.setFont(Constants.FUENTE_NEGRITA);
 		botonCalc.setText(Constants.CALCULAR);
 		botonCalc.setActionCommand(Constants.CALCULAR_ACTION);
-		botonCalc.setHorizontalAlignment(JTextField.CENTER);
+		botonCalc.setHorizontalAlignment(SwingConstants.CENTER);
 		botonCalc.addActionListener(this);
 		botonCalc.addKeyListener(this);
 		cp.add(botonCalc);
 		
 		this.setSize(500, 300);
 		this.setTitle(Constants.TITLE);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);		
 		this.setVisible(true);
@@ -151,8 +151,8 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {}
+	public void keyReleased(KeyEvent e) { /* document why this method is empty */ }
 
 	@Override
-	public void keyTyped(KeyEvent e) {}
+	public void keyTyped(KeyEvent e) { /* document why this method is empty */ }
 }

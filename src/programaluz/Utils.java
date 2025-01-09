@@ -1,7 +1,13 @@
+package programaluz;
+
 import static java.lang.Math.floor;
 import static java.lang.Math.round;
 
-public class Utils {
+class Utils {
+    private Utils() {
+        throw new IllegalStateException("Utils class");
+    }
+
     public static double calcularMes(int dias) {
         return (floor((dias / Constants.MEDIA_MES) * Constants.CIEN) / Constants.CIEN);
     }

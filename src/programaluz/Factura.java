@@ -1,6 +1,12 @@
+package programaluz;
 
+import programaluz.dto.MenuFinalDTO;
 
-public class Factura {
+class Factura {
+
+	private Factura(){
+		throw new IllegalStateException("Factura class");
+	}
 
 	
 	public static double calcular(int kwh, int dias, double potencia, double kwEuros, double kwhEuros) {
@@ -25,8 +31,22 @@ public class Factura {
 		res = res * Constants.CIEN;
 		double tmp = Math.round(res);
 		res = tmp / Constants.CIEN;
+
+		MenuFinalDTO menuFinalDTO = MenuFinalDTO
+				.builder()
+				.kwEuros(kwEuros)
+				.kwhEuros(kwhEuros)
+				.impuesto(Constants.IMPUESTO)
+				.equipos(Constants.EQUIPOS)
+				.urgencias(Constants.URGENCIAS)
+				.iva(Constants.IVA_21)
+				.kwh(kwh)
+				.dias(dias)
+				.potencia(potencia)
+				.build();
+
 		
-		new MenuFinal(kwEuros, kwhEuros, Constants.IMPUESTO, Constants.EQUIPOS, Constants.URGENCIAS, Constants.IVA_21, kwh, dias, potencia);
+		new MenuFinal(menuFinalDTO);
 		return res;
 	}
 }
