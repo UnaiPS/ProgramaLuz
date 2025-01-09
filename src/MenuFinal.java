@@ -1,7 +1,6 @@
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
-import java.text.DecimalFormat;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
