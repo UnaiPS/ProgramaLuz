@@ -76,49 +76,49 @@ public class MenuFinal extends JFrame {
 			}
 		}
 		campos[0][0].setFont(Constants.FUENTE_NEGRITA);
-		campos[0][0].setText("ENERGÍA");
+		campos[0][0].setText(Constants.ENERGIA);
 		
-		campos[1][0].setText("Potencia facturada");
+		campos[1][0].setText(Constants.POT_FACTURADA);
 		campos[1][1].setText(potencia + " kW x " + dias + " días x " + kwEuros + " €/kW día");
-		campos[1][2].setText(potenciaFac + " €");
+		campos[1][2].setText(potenciaFac + Constants.EUR_SYMBOL);
 		
-		campos[2][0].setText("Energía facturada");
+		campos[2][0].setText(Constants.ENER_FACTURADA);
 		campos[2][1].setText(kwh + " kWh x " + kwhEuros + " €/kWh");
-		campos[2][2].setText(energiaFac + " €");
+		campos[2][2].setText(energiaFac + Constants.EUR_SYMBOL);
 		
-		campos[3][0].setText("Impuesto sobre electricidad");
-		campos[3][1].setText(impuesto + "% s/" + (potenciaFac + energiaFac) + " €");
-		campos[3][2].setText(impuestoFac + " €");
+		campos[3][0].setText(Constants.IMP_ELECTRICIDAD);
+		campos[3][1].setText(impuesto + "% s/" + (potenciaFac + energiaFac) + Constants.EUR_SYMBOL);
+		campos[3][2].setText(impuestoFac + Constants.EUR_SYMBOL);
 		
-		campos[4][0].setText("TOTAL ENERGÍA");
-		campos[4][2].setText(totalEnergia+" €");
+		campos[4][0].setText(Constants.TOT_ENERGIA);
+		campos[4][2].setText(totalEnergia + Constants.EUR_SYMBOL);
 		
 		campos[6][0].setFont(Constants.FUENTE_NEGRITA);
-		campos[6][0].setText("SERVICIOS Y OTROS CONCEPTOS");
+		campos[6][0].setText(Constants.SERV_Y_OTROS);
 		
-		campos[7][0].setText("Alquiler equipos medida");
-		campos[7][1].setText(dias+" días x "+equipos+" €/día");
-		campos[7][2].setText(alquilerFac+" €");
+		campos[7][0].setText(Constants.ALQ_EQUIPOS);
+		campos[7][1].setText(dias+" días x " + equipos + " €/día");
+		campos[7][2].setText(alquilerFac + Constants.EUR_SYMBOL);
 		
-		campos[8][0].setText("Protección eléctrica hogar");
+		campos[8][0].setText(Constants.PROT_ELECTRICA);
 		campos[8][1].setText( Utils.calcularMes(dias) + " mes x " + urgencias + " €/mes");
-		campos[8][2].setText(urgenciasFac + " €");
+		campos[8][2].setText(urgenciasFac + Constants.EUR_SYMBOL);
 		
-		campos[9][0].setText("TOTAL SERVICIOS Y OTROS CONCEPTOS");
-		campos[9][2].setText(totalServicios + " €");
+		campos[9][0].setText(Constants.TOT_SERV_Y_OTROS);
+		campos[9][2].setText(totalServicios + Constants.EUR_SYMBOL);
 		
-		campos[11][0].setText("IMPORTE TOTAL");
-		campos[11][2].setText(importeTotal + " €");
+		campos[11][0].setText(Constants.IMPORTE_TOTAL);
+		campos[11][2].setText(importeTotal + Constants.EUR_SYMBOL);
 		
-		campos[12][0].setText("IVA");
-		campos[12][1].setText(iva + "% s/" + importeTotal + " €");
-		campos[12][2].setText(ivaFac + " €");
+		campos[12][0].setText(Constants.IVA);
+		campos[12][1].setText(iva + "% s/" + importeTotal + Constants.EUR_SYMBOL);
+		campos[12][2].setText(ivaFac + Constants.EUR_SYMBOL);
 		
-		campos[13][0].setText("TOTAL IMPORTE FACTURA");
-		campos[13][2].setText(res + " €");
+		campos[13][0].setText(Constants.TOT_IMPORTE_FACT);
+		campos[13][2].setText(res + Constants.EUR_SYMBOL);
 		
 		this.pack();
-		this.setTitle("Calcular factura");
+		this.setTitle(Constants.TITLE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);		
 		this.setVisible(true);

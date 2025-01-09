@@ -50,30 +50,30 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 			
 			switch(i) {
 			case 0:
-				nombre.setText("kWh consumidos:");
-				nombre.setToolTipText("Cantidad de kWh consumidos");
+				nombre.setText(Constants.KWH_CONSUMIDOS);
+				nombre.setToolTipText(Constants.KHW_CONSUMIDOS_TP);
 				break;
 			case 1:
-				nombre.setText("Número de días:");
-				nombre.setToolTipText("Número de días");
+				nombre.setText(Constants.NUM_DIAS);
+				nombre.setToolTipText(Constants.NUM_DIAS_TP);
 				break;
 			case 2:
-				nombre.setText("Potencia contratada (kW):");
-				nombre.setToolTipText("Potencia contratada (kW)");
+				nombre.setText(Constants.KW_CONTRATADOS);
+				nombre.setToolTipText(Constants.KW_CONTRATADOS_TP);
 				break;
 			case 3:
-				nombre.setText("Potencia (kw/€):");
-				nombre.setToolTipText("Potencia kw por euro (kw/€)");
+				nombre.setText(Constants.KW_PER_EURO);
+				nombre.setToolTipText(Constants.KW_PER_EURO_TP);
 				campo.setText(String.valueOf(Constants.KW_EUROS));
 				break;
 			case 4:
-				nombre.setText("Energía (kwh/€):");
-				nombre.setToolTipText("Potencia kwh por euro (kwh/€)");
+				nombre.setText(Constants.KWH_PER_EURO);
+				nombre.setToolTipText(Constants.KWH_PER_EURO_TP);
 				campo.setText(String.valueOf(Constants.KWH_EUROS));
 				break;
 			case 5:
-				nombre.setText("Resultado:");
-				nombre.setToolTipText("Resultado");
+				nombre.setText(Constants.RESULT);
+				nombre.setToolTipText(Constants.RESULT_TP);
 				campo.setEditable(false);
 				campo.setBackground(Color.WHITE);
 				campo.setFocusable(false);
@@ -83,15 +83,15 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 
         JButton botonCalc = new JButton();
 		botonCalc.setFont(Constants.FUENTE_NEGRITA);
-		botonCalc.setText("Calcular");
-		botonCalc.setActionCommand("calcular");
+		botonCalc.setText(Constants.CALCULAR);
+		botonCalc.setActionCommand(Constants.CALCULAR_ACTION);
 		botonCalc.setHorizontalAlignment(JTextField.CENTER);
 		botonCalc.addActionListener(this);
 		botonCalc.addKeyListener(this);
 		cp.add(botonCalc);
 		
 		this.setSize(500, 300);
-		this.setTitle("Calcular factura");
+		this.setTitle(Constants.TITLE);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);		
@@ -105,7 +105,7 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 		JTextField campoKwEuros = (JTextField) arrayContainers[3].getComponent(1);
 		JTextField campoKwhEuros = (JTextField) arrayContainers[4].getComponent(1);
 		JTextField campoRes = (JTextField) arrayContainers[5].getComponent(1);
-		String resultado = "Error.";
+		String resultado = Constants.ERROR;
 		if(!campoKwh.getText().isEmpty() && !campoDias.getText().isEmpty()) {
 			int kwh;
 			int dias;
@@ -127,10 +127,10 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 			}
 			if(kwh > 0 && dias > 0 && potencia > 0) {
 				double res = Factura.calcular(kwh, dias, potencia, kwEur, kwhEur);
-				resultado = res + "€";
+				resultado = res + Constants.EUR_SYMBOL;
 			}
 		} else {
-			resultado = "Debes introducir los valores!";
+			resultado = Constants.ERROR_MSG;
 		}
 		
 		campoRes.setText(resultado);
@@ -138,7 +138,7 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("calcular")) {
+		if(e.getActionCommand().equals(Constants.CALCULAR_ACTION)) {
 			calcular();
 		}
 	}

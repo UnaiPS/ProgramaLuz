@@ -23,5 +23,34 @@ public class Constants {
     public static final Border BORDE = BorderFactory.createMatteBorder(2, 0, 0, 0, Color.BLACK);
 
     //Textos aplicación
-
+    public static final String KWH_CONSUMIDOS = "kWh consumidos:";
+    public static final String KHW_CONSUMIDOS_TP = "Cantidad de kWh consumidos";
+    public static final String NUM_DIAS = "Número de días:";
+    public static final String NUM_DIAS_TP = "Número de días";
+    public static final String KW_CONTRATADOS = "Potencia contratada (kW):";
+    public static final String KW_CONTRATADOS_TP = "Potencia contratada (kW)";
+    public static final String KW_PER_EURO = "Potencia (kw/€):";
+    public static final String KW_PER_EURO_TP = "Potencia kw por euro (kw/€)";
+    public static final String KWH_PER_EURO = "Energía (kwh/€):";
+    public static final String KWH_PER_EURO_TP = "Potencia kwh por euro (kwh/€)";
+    public static final String RESULT = "Resultado:";
+    public static final String RESULT_TP = "Resultado";
+    public static final String CALCULAR = "Calcular";
+    public static final String CALCULAR_ACTION = "calcular";
+    public static final String TITLE = "Calcular factura";
+    public static final String ERROR = "Error.";
+    public static final String ERROR_MSG = "Debes introducir los valores!";
+    public static final String ENERGIA = "ENERGÍA";
+    public static final String POT_FACTURADA = "Potencia facturada";
+    public static final String ENER_FACTURADA = "Energía facturada";
+    public static final String IMP_ELECTRICIDAD = "Impuesto sobre electricidad";
+    public static final String TOT_ENERGIA = "TOTAL ENERGÍA";
+    public static final String SERV_Y_OTROS = "SERVICIOS Y OTROS CONCEPTOS";
+    public static final String ALQ_EQUIPOS = "Alquiler equipos medida";
+    public static final String PROT_ELECTRICA = "Protección eléctrica hogar";
+    public static final String TOT_SERV_Y_OTROS = "TOTAL SERVICIOS Y OTROS CONCEPTOS";
+    public static final String IMPORTE_TOTAL = "IMPORTE TOTAL";
+    public static final String IVA = "IVA";
+    public static final String TOT_IMPORTE_FACT = "TOTAL IMPORTE FACTURA";
+    public static final String EUR_SYMBOL = " €";
 }
