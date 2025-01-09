@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="programa modificado:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/programa_modificado_jar</output-path>
+    <root id="archive" name="programa modificado.jar">
+      <element id="module-output" name="programa modificado" />
+    </root>
+  </artifact>
+</component>
