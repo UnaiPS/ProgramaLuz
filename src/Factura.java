@@ -8,8 +8,9 @@ public class Factura {
 
 		double potenciaFac = potencia * dias * kwEuros;
 		double energiaFac = kwh * kwhEuros;
+		double bonoSocial = dias * Constants.BONO_SOCIAL;
 		double impuestoFac = (potenciaFac + energiaFac) * Constants.IMPUESTO / Constants.CIEN;
-		double totalEnergia = potenciaFac + energiaFac + impuestoFac;
+		double totalEnergia = potenciaFac + energiaFac + bonoSocial + impuestoFac;
 
 		double meses = Utils.calcularMes(dias);
 		

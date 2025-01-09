@@ -9,6 +9,7 @@ public class Constants {
     public static final double IMPUESTO = 5.1126932;
     public static final double EQUIPOS = 0.026557;
     public static final double URGENCIAS = 7.12;
+    public static final double BONO_SOCIAL = 0.006282;
     public static final double IVA_21 = 21.0;
     public static final double MEDIA_MES = 30;
     public static final double CIEN = 100;
@@ -42,7 +43,7 @@ public class Constants {
     public static final String ERROR_MSG = "Debes introducir los valores!";
     public static final String ENERGIA = "ENERGÍA";
     public static final String POT_FACTURADA = "Potencia facturada";
-    public static final String ENER_FACTURADA = "Energía facturada";
+    public static final String ENER_CONSUMIDA = "Energía consumida";
     public static final String IMP_ELECTRICIDAD = "Impuesto sobre electricidad";
     public static final String TOT_ENERGIA = "TOTAL ENERGÍA";
     public static final String SERV_Y_OTROS = "SERVICIOS Y OTROS CONCEPTOS";
@@ -52,6 +53,7 @@ public class Constants {
     public static final String IMPORTE_TOTAL = "IMPORTE TOTAL";
     public static final String IVA = "IVA";
     public static final String TOT_IMPORTE_FACT = "TOTAL IMPORTE FACTURA";
+    public static final String FINAN_BONO_SOCIAL = "Financiación bono social fijo";
     public static final String KW_X = " kW x ";
     public static final String DIAS_X = " días x ";
     public static final String EUR_KW_DIA = " €/kW día";
