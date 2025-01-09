@@ -1,88 +1,65 @@
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.text.DecimalFormat;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
-
-import static java.lang.Math.round;
 
 public class MenuFinal extends JFrame {
-	private static final long serialVersionUID = 1L;
-	private static final Font fuente = new Font("Verdana", Font.PLAIN, 12);
-	private static final Font fuenteNegrita = new Font("Verdana", Font.BOLD, 12);
-	private static final Color color = new Color(155, 128, 32);
-	private static final Border borde = BorderFactory.createMatteBorder(2, 0, 0, 0, Color.BLACK);
-	
-	private JTextField[][] campos;
-	
-	MenuFinal(double kwEuros, double kwhEuros, double impuesto, double equipos, double urgencias, double iva, int kwh, int dias, double potencia) {
-		long tmp;
+
+    MenuFinal(double kwEuros, double kwhEuros, double impuesto, double equipos, double urgencias, double iva, int kwh, int dias, double potencia) {
 
 		//potenciaFac
-		double potenciaFac = potencia * dias * kwEuros * 100;
-		tmp = round(potenciaFac);
-		potenciaFac = (double) tmp / 100;
+		double potenciaFac = potencia * dias * kwEuros * Constants.CIEN;
+		potenciaFac = Utils.roundAndDivideByHundred(potenciaFac);
 
 		//energiaFac
-		double energiaFac = kwh*kwhEuros *100;
-		tmp = round(energiaFac);
-		energiaFac = (double) tmp / 100;
+		double energiaFac = kwh*kwhEuros * Constants.CIEN;
+		energiaFac = Utils.roundAndDivideByHundred(energiaFac);
 
 		//impuestoFac
-		double impuestoFac = 100*(potenciaFac+energiaFac)*impuesto/100;
-		tmp = round(impuestoFac);
-		impuestoFac = (double) tmp / 100;
+		double impuestoFac = Constants.CIEN * (potenciaFac + energiaFac) * impuesto / Constants.CIEN;
+		impuestoFac = Utils.roundAndDivideByHundred(impuestoFac);
 
 		//totalEnergia
-		double totalEnergia = (potenciaFac + energiaFac + impuestoFac)*100;
-		tmp = round(totalEnergia);
-		totalEnergia = (double) tmp / 100;
+		double totalEnergia = (potenciaFac + energiaFac + impuestoFac) * Constants.CIEN;
+		totalEnergia = Utils.roundAndDivideByHundred(totalEnergia);
 
 		//alquilerFac
-		double alquilerFac = dias*equipos*100;
-		tmp = round(alquilerFac);
-		alquilerFac = (double) tmp / 100;
+		double alquilerFac = dias*equipos * Constants.CIEN;
+		alquilerFac = Utils.roundAndDivideByHundred(alquilerFac);
 
 		//urgenciasFac
-		double urgenciasFac =  round(((double) dias / 30) *urgencias * 100);
-		tmp = round(urgenciasFac);
-		urgenciasFac = (double) tmp / 100;
+		double urgenciasFac =  (Utils.calcularMes(dias) * urgencias * Constants.CIEN);
+		urgenciasFac = Utils.roundAndDivideByHundred(urgenciasFac);
 
 		//totalServicios
-		double totalServicios = (alquilerFac + urgenciasFac)*100;
-		tmp = round(totalServicios);
-		totalServicios = (double) tmp / 100;
+		double totalServicios = (alquilerFac + urgenciasFac) * Constants.CIEN;
+		totalServicios = Utils.roundAndDivideByHundred(totalServicios);
 
 		//importeTotal
-		double importeTotal = (totalEnergia + totalServicios)*100;
-		tmp = round(importeTotal);
-		importeTotal = (double) tmp / 100;
+		double importeTotal = (totalEnergia + totalServicios) * Constants.CIEN;
+		importeTotal = Utils.roundAndDivideByHundred(importeTotal);
 
 		//ivaFac
-		double ivaFac = 100*importeTotal*iva/100;
-		tmp = round(ivaFac);
-		ivaFac = (double) tmp / 100;
+		double ivaFac = Constants.CIEN * importeTotal * iva / Constants.CIEN;
+		ivaFac = Utils.roundAndDivideByHundred(ivaFac);
 
 		//res
-		double res = (importeTotal + ivaFac)*100;
-		tmp = round(res);
-		res = (double) tmp / 100;
+		double res = (importeTotal + ivaFac)*Constants.CIEN;
+		res = Utils.roundAndDivideByHundred(res);
 		
 		Container cp = getContentPane();
 		cp.setLayout(new GridLayout(14, 3));
-		campos = new JTextField[14][3];
+        JTextField[][] campos = new JTextField[14][3];
 		
 		for(int linea=0; linea<14; linea++) {
 			for(int col=0; col<3; col++) {
 				campos[linea][col] = new JTextField();
 				campos[linea][col].setFocusable(false);
 				campos[linea][col].setEditable(false);
-				campos[linea][col].setFont(fuente);
+				campos[linea][col].setFont(Constants.FUENTE);
 				campos[linea][col].setBackground(Color.WHITE);
 				campos[linea][col].setBorder(null);
 				cp.add(campos[linea][col]);
@@ -90,16 +67,16 @@ public class MenuFinal extends JFrame {
 					campos[linea][col].setHorizontalAlignment(JTextField.RIGHT);
 				}
 				if(linea == 4 || linea == 9 || linea == 13) {
-					campos[linea][col].setBorder(borde);
-					campos[linea][col].setFont(fuenteNegrita);
-					campos[linea][col].setForeground(color);
+					campos[linea][col].setBorder(Constants.BORDE);
+					campos[linea][col].setFont(Constants.FUENTE_NEGRITA);
+					campos[linea][col].setForeground(Constants.COLOR);
 				}
 				if(linea == 11 || linea == 12 || linea == 13) {
-					campos[linea][col].setBackground(new Color(222, 222, 255));
+					campos[linea][col].setBackground(Constants.COLOR_FONDO);
 				}
 			}
 		}
-		campos[0][0].setFont(fuenteNegrita);
+		campos[0][0].setFont(Constants.FUENTE_NEGRITA);
 		campos[0][0].setText("ENERGÍA");
 		
 		campos[1][0].setText("Potencia facturada");
@@ -117,7 +94,7 @@ public class MenuFinal extends JFrame {
 		campos[4][0].setText("TOTAL ENERGÍA");
 		campos[4][2].setText(totalEnergia+" €");
 		
-		campos[6][0].setFont(fuenteNegrita);
+		campos[6][0].setFont(Constants.FUENTE_NEGRITA);
 		campos[6][0].setText("SERVICIOS Y OTROS CONCEPTOS");
 		
 		campos[7][0].setText("Alquiler equipos medida");
@@ -125,8 +102,7 @@ public class MenuFinal extends JFrame {
 		campos[7][2].setText(alquilerFac+" €");
 		
 		campos[8][0].setText("Protección eléctrica hogar");
-		DecimalFormat df = new DecimalFormat("#.##");
-		campos[8][1].setText( df.format(((double) dias / 30)) + " mes x " + urgencias + " €/mes");
+		campos[8][1].setText( Utils.calcularMes(dias) + " mes x " + urgencias + " €/mes");
 		campos[8][2].setText(urgenciasFac + " €");
 		
 		campos[9][0].setText("TOTAL SERVICIOS Y OTROS CONCEPTOS");

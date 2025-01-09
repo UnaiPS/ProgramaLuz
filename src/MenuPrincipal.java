@@ -1,6 +1,5 @@
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,13 +12,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 public class MenuPrincipal extends JFrame implements ActionListener, KeyListener {
-	private static final long serialVersionUID = 1L;
-	private static final Font fuente = new Font("Verdana", Font.BOLD, 12);
 	
-	private Container[] arrayContainers;
-	private JButton botonCalc;
-	
-	MenuPrincipal() {				
+	private final Container[] arrayContainers;
+
+    MenuPrincipal() {
 		Container cp = getContentPane();
 		cp.setLayout(new GridLayout(7, 1));
 		
@@ -29,12 +25,12 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 			arrayContainers[i].setLayout(new GridLayout(1, 2));
 
 			JTextField nombre = new JTextField();
-			nombre.setFont(fuente);
+			nombre.setFont(Constants.FUENTE_NEGRITA);
 			nombre.setHorizontalAlignment(JTextField.CENTER);
 			nombre.setEditable(false);
 			nombre.setFocusable(false);
 			JTextField campo = new JTextField();
-			campo.setFont(fuente);
+			campo.setFont(Constants.FUENTE_NEGRITA);
 			campo.addKeyListener(this);
 			campo.addFocusListener(new java.awt.event.FocusAdapter() {
 			    public void focusGained(final java.awt.event.FocusEvent evt) {
@@ -68,12 +64,12 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 			case 3:
 				nombre.setText("Potencia (kw/€):");
 				nombre.setToolTipText("Potencia kw por euro (kw/€)");
-				campo.setText(String.valueOf(Constants.kwEuros));
+				campo.setText(String.valueOf(Constants.KW_EUROS));
 				break;
 			case 4:
 				nombre.setText("Energía (kwh/€):");
 				nombre.setToolTipText("Potencia kwh por euro (kwh/€)");
-				campo.setText(String.valueOf(Constants.kwhEuros));
+				campo.setText(String.valueOf(Constants.KWH_EUROS));
 				break;
 			case 5:
 				nombre.setText("Resultado:");
@@ -84,9 +80,9 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 				break;
 			}
 		}
-		
-		botonCalc = new JButton();
-		botonCalc.setFont(fuente);
+
+        JButton botonCalc = new JButton();
+		botonCalc.setFont(Constants.FUENTE_NEGRITA);
 		botonCalc.setText("Calcular");
 		botonCalc.setActionCommand("calcular");
 		botonCalc.setHorizontalAlignment(JTextField.CENTER);
@@ -111,11 +107,11 @@ public class MenuPrincipal extends JFrame implements ActionListener, KeyListener
 		JTextField campoRes = (JTextField) arrayContainers[5].getComponent(1);
 		String resultado = "Error.";
 		if(!campoKwh.getText().isEmpty() && !campoDias.getText().isEmpty()) {
-			int kwh = 0;
-			int dias = 0;
-			double potencia = 0;
-			double kwEur = 0;
-			double kwhEur = 0;
+			int kwh;
+			int dias;
+			double potencia;
+			double kwEur;
+			double kwhEur;
 			try {
 				kwh = Integer.parseInt(campoKwh.getText());
 				dias = Integer.parseInt(campoDias.getText());
