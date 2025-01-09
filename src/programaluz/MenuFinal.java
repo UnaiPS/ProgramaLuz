@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 
 import javax.swing.*;
 
+import static java.lang.Math.floor;
+
 public class MenuFinal extends JFrame {
 
     MenuFinal(MenuFinalDTO menuFinalDTO) {
@@ -49,18 +51,22 @@ public class MenuFinal extends JFrame {
 		importeTotal = Utils.roundAndDivideByHundred(importeTotal);
 
 		//ivaFac
-		double ivaFac = Constants.CIEN * importeTotal * menuFinalDTO.getIva() / Constants.CIEN;
+		double ivaFac = Constants.CIEN * urgenciasFac * menuFinalDTO.getIva21() / Constants.CIEN;
 		ivaFac = Utils.roundAndDivideByHundred(ivaFac);
 
+		//ivaReducido
+		double ivaReducido = Constants.CIEN * (totalEnergia + alquilerFac) * menuFinalDTO.getIva10() / Constants.CIEN;
+		ivaReducido = Utils.roundAndDivideByHundred(ivaReducido);
+
 		//res
-		double res = (importeTotal + ivaFac)*Constants.CIEN;
+		double res = (importeTotal + ivaFac + ivaReducido) * Constants.CIEN;
 		res = Utils.roundAndDivideByHundred(res);
 		
 		Container cp = getContentPane();
-		cp.setLayout(new GridLayout(15, 3));
-        JTextField[][] campos = new JTextField[15][3];
+		cp.setLayout(new GridLayout(16, 3));
+        JTextField[][] campos = new JTextField[16][3];
 		
-		for(int linea=0; linea<15; linea++) {
+		for(int linea=0; linea<16; linea++) {
 			for(int col=0; col<3; col++) {
 				campos[linea][col] = new JTextField();
 				campos[linea][col].setFocusable(false);
@@ -72,12 +78,12 @@ public class MenuFinal extends JFrame {
 				if(col == 2) {
 					campos[linea][col].setHorizontalAlignment(SwingConstants.RIGHT);
 				}
-				if(linea == 5 || linea == 10 || linea == 14) {
+				if(linea == 5 || linea == 10 || linea == 15) {
 					campos[linea][col].setBorder(Constants.BORDE);
 					campos[linea][col].setFont(Constants.FUENTE_NEGRITA);
 					campos[linea][col].setForeground(Constants.COLOR);
 				}
-				if(linea == 12 || linea == 13 || linea == 14) {
+				if(linea == 12 || linea == 13 || linea == 14 || linea == 15) {
 					campos[linea][col].setBackground(Constants.COLOR_FONDO);
 				}
 			}
@@ -120,13 +126,17 @@ public class MenuFinal extends JFrame {
 		
 		campos[12][0].setText(Constants.IMPORTE_TOTAL);
 		campos[12][2].setText(importeTotal + Constants.EUR_SYMBOL);
+
+		campos[13][0].setText(Constants.IVA_REDUCIDO);
+		campos[13][1].setText(menuFinalDTO.getIva10() + Constants.PERC_S + floor((totalEnergia + alquilerFac) * Constants.CIEN) / Constants.CIEN + Constants.EUR_SYMBOL);
+		campos[13][2].setText(ivaReducido + Constants.EUR_SYMBOL);
+
+		campos[14][0].setText(Constants.IVA);
+		campos[14][1].setText(menuFinalDTO.getIva21() + Constants.PERC_S + urgenciasFac + Constants.EUR_SYMBOL);
+		campos[14][2].setText(ivaFac + Constants.EUR_SYMBOL);
 		
-		campos[13][0].setText(Constants.IVA);
-		campos[13][1].setText(menuFinalDTO.getIva() + Constants.PERC_S + importeTotal + Constants.EUR_SYMBOL);
-		campos[13][2].setText(ivaFac + Constants.EUR_SYMBOL);
-		
-		campos[14][0].setText(Constants.TOT_IMPORTE_FACT);
-		campos[14][2].setText(res + Constants.EUR_SYMBOL);
+		campos[15][0].setText(Constants.TOT_IMPORTE_FACT);
+		campos[15][2].setText(res + Constants.EUR_SYMBOL);
 		
 		this.pack();
 		this.setTitle(Constants.TITLE);

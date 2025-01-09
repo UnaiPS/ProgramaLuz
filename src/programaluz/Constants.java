@@ -17,6 +17,7 @@ class Constants {
     public static final double URGENCIAS = 7.12;
     public static final double BONO_SOCIAL = 0.006282;
     public static final double IVA_21 = 21.0;
+    public static final double IVA_10 = 10;
     public static final double MEDIA_MES = 30;
     public static final double CIEN = 100;
 
@@ -58,6 +59,7 @@ class Constants {
     public static final String TOT_SERV_Y_OTROS = "TOTAL SERVICIOS Y OTROS CONCEPTOS";
     public static final String IMPORTE_TOTAL = "IMPORTE TOTAL";
     public static final String IVA = "IVA";
+    public static final String IVA_REDUCIDO = "IVA Reducido (*)";
     public static final String TOT_IMPORTE_FACT = "TOTAL IMPORTE FACTURA";
     public static final String FINAN_BONO_SOCIAL = "Financiación bono social fijo";
     public static final String KW_X = " kW x ";

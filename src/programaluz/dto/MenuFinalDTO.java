@@ -13,7 +13,8 @@ public class MenuFinalDTO {
     double impuesto;
     double equipos;
     double urgencias;
-    double iva;
+    double iva21;
+    double iva10;
     int kwh;
     int dias;
     double potencia;

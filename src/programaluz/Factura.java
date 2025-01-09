@@ -25,8 +25,9 @@ class Factura {
 		double totalServicios = alquilerFac + urgenciasFac;
 		
 		double importeTotal = totalEnergia + totalServicios;
-		double ivaFac = importeTotal * Constants.IVA_21 / Constants.CIEN;
-		res = importeTotal + ivaFac;
+		double ivaFac = urgenciasFac * Constants.IVA_21 / Constants.CIEN;
+		double ivaReducido = (totalEnergia + alquilerFac) * Constants.IVA_10 / Constants.CIEN;
+		res = importeTotal + ivaReducido + ivaFac;
 		
 		res = res * Constants.CIEN;
 		double tmp = Math.round(res);
@@ -39,7 +40,8 @@ class Factura {
 				.impuesto(Constants.IMPUESTO)
 				.equipos(Constants.EQUIPOS)
 				.urgencias(Constants.URGENCIAS)
-				.iva(Constants.IVA_21)
+				.iva21(Constants.IVA_21)
+				.iva10(Constants.IVA_10)
 				.kwh(kwh)
 				.dias(dias)
 				.potencia(potencia)
