@@ -2,8 +2,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.GridLayout;
 
-import javax.swing.JFrame;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class MenuFinal extends JFrame {
 
@@ -63,7 +62,7 @@ public class MenuFinal extends JFrame {
 				campos[linea][col].setBorder(null);
 				cp.add(campos[linea][col]);
 				if(col == 2) {
-					campos[linea][col].setHorizontalAlignment(JTextField.RIGHT);
+					campos[linea][col].setHorizontalAlignment(SwingConstants.RIGHT);
 				}
 				if(linea == 4 || linea == 9 || linea == 13) {
 					campos[linea][col].setBorder(Constants.BORDE);
@@ -79,15 +78,15 @@ public class MenuFinal extends JFrame {
 		campos[0][0].setText(Constants.ENERGIA);
 		
 		campos[1][0].setText(Constants.POT_FACTURADA);
-		campos[1][1].setText(potencia + " kW x " + dias + " días x " + kwEuros + " €/kW día");
+		campos[1][1].setText(potencia + Constants.KW_X + dias + Constants.DIAS_X + kwEuros + Constants.EUR_KW_DIA);
 		campos[1][2].setText(potenciaFac + Constants.EUR_SYMBOL);
 		
 		campos[2][0].setText(Constants.ENER_FACTURADA);
-		campos[2][1].setText(kwh + " kWh x " + kwhEuros + " €/kWh");
+		campos[2][1].setText(kwh + Constants.KWH_X + kwhEuros + Constants.EUR_KWH);
 		campos[2][2].setText(energiaFac + Constants.EUR_SYMBOL);
 		
 		campos[3][0].setText(Constants.IMP_ELECTRICIDAD);
-		campos[3][1].setText(impuesto + "% s/" + (potenciaFac + energiaFac) + Constants.EUR_SYMBOL);
+		campos[3][1].setText(impuesto + Constants.PERC_S + (potenciaFac + energiaFac) + Constants.EUR_SYMBOL);
 		campos[3][2].setText(impuestoFac + Constants.EUR_SYMBOL);
 		
 		campos[4][0].setText(Constants.TOT_ENERGIA);
@@ -97,11 +96,11 @@ public class MenuFinal extends JFrame {
 		campos[6][0].setText(Constants.SERV_Y_OTROS);
 		
 		campos[7][0].setText(Constants.ALQ_EQUIPOS);
-		campos[7][1].setText(dias+" días x " + equipos + " €/día");
+		campos[7][1].setText(dias + Constants.DIAS_X + equipos + Constants.EUR_DIA);
 		campos[7][2].setText(alquilerFac + Constants.EUR_SYMBOL);
 		
 		campos[8][0].setText(Constants.PROT_ELECTRICA);
-		campos[8][1].setText( Utils.calcularMes(dias) + " mes x " + urgencias + " €/mes");
+		campos[8][1].setText( Utils.calcularMes(dias) + Constants.MES_X + urgencias + Constants.EUR_MES);
 		campos[8][2].setText(urgenciasFac + Constants.EUR_SYMBOL);
 		
 		campos[9][0].setText(Constants.TOT_SERV_Y_OTROS);
@@ -111,7 +110,7 @@ public class MenuFinal extends JFrame {
 		campos[11][2].setText(importeTotal + Constants.EUR_SYMBOL);
 		
 		campos[12][0].setText(Constants.IVA);
-		campos[12][1].setText(iva + "% s/" + importeTotal + Constants.EUR_SYMBOL);
+		campos[12][1].setText(iva + Constants.PERC_S + importeTotal + Constants.EUR_SYMBOL);
 		campos[12][2].setText(ivaFac + Constants.EUR_SYMBOL);
 		
 		campos[13][0].setText(Constants.TOT_IMPORTE_FACT);

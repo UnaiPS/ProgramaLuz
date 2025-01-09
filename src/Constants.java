@@ -52,5 +52,14 @@ public class Constants {
     public static final String IMPORTE_TOTAL = "IMPORTE TOTAL";
     public static final String IVA = "IVA";
     public static final String TOT_IMPORTE_FACT = "TOTAL IMPORTE FACTURA";
+    public static final String KW_X = " kW x ";
+    public static final String DIAS_X = " días x ";
+    public static final String EUR_KW_DIA = " €/kW día";
     public static final String EUR_SYMBOL = " €";
+    public static final String KWH_X = " kWh x ";
+    public static final String EUR_KWH = " €/kWh";
+    public static final String PERC_S = "% s/";
+    public static final String EUR_DIA = " €/día";
+    public static final String MES_X = " mes x ";
+    public static final String EUR_MES = " €/mes";
 }
